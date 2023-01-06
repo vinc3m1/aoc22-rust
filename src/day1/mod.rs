@@ -1,5 +1,5 @@
 pub fn day1() {
-    println!("day1!");
+    println!("day 1!");
 
     let contents = include_str!("input.txt");
 
