@@ -7,11 +7,13 @@ pub fn day2() {
 
     let mut lines = contents.lines();
 
-    let mut score = 0;
+    let mut score_p1 = 0;
+    let mut score_p2 = 0;
     while let Some(line) = lines.next() {
         if let Some((op_choice, my_choice)) = line.split_whitespace().collect_tuple() {
 
-            score += match my_choice {
+            // part 1: we think x, y, z mean rock, paper, scissors
+            score_p1 += match my_choice {
                 "X" => 1 + match op_choice { // rock
                     "A" => 3, // rock - draw
                     "B" => 0, // paper - lose
@@ -32,8 +34,34 @@ pub fn day2() {
                 },
                 _ => panic!(),
             };
+
+
+            // part 2: x, y, z, mean lose, draw, win
+            let result = my_choice;
+            score_p2 += match result {
+                "X" => 0 + match op_choice { // lose
+                    "A" => 3, // rock - scissors
+                    "B" => 1, // paper - rock
+                    "C" => 2, // scissors - paper
+                    _ => panic!(),
+                },
+                "Y" => 3 + match op_choice { // draw
+                    "A" => 1, // rock - rock
+                    "B" => 2, // paper - paper
+                    "C" => 3, // scissors - scissors
+                    _ => panic!(),
+                },
+                "Z" => 6 + match op_choice { // win
+                    "A" => 2, // rock - paper
+                    "B" => 3, // paper - scissors
+                    "C" => 1, // scissors - rock
+                    _ => panic!(),
+                },
+                _ => panic!(),
+            };
         }
     }
 
-    println!("score: {score}")
+    println!("score p1: {score_p1}");
+    println!("score p2: {score_p2}");
 }
