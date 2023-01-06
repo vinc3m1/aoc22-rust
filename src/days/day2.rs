@@ -1,9 +1,9 @@
 use itertools::Itertools;
 
-pub fn day2() {
+pub fn run() {
     println!("day 2!");
 
-    let contents = include_str!("input.txt");
+    let contents = include_str!("day2.txt");
 
     let mut lines = contents.lines();
 

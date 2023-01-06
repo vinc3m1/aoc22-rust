@@ -1,7 +1,7 @@
-pub fn day1() {
+pub fn run() {
     println!("day 1!");
 
-    let contents = include_str!("input.txt");
+    let contents = include_str!("day1.txt");
 
     let mut lines = contents.lines();
 

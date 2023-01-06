@@ -1,14 +1,12 @@
-mod day1;
-mod day2;
+mod days;
 
 fn main() {
     println!("Hello, world!");
 
-    println!("---------------------------------");
+    let days = [days::day1::run, days::day2::run];
 
-    day1::day1();
-
-    println!("---------------------------------");
-
-    day2::day2();
+    for day in days {
+        println!("---------------------------------");
+        day();
+    }
 }
