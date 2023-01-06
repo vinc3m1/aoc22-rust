@@ -18,21 +18,21 @@ pub fn day2() {
                     "A" => 3, // rock - draw
                     "B" => 0, // paper - lose
                     "C" => 6, // scissors - win
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
                 "Y" => 2 + match op_choice { // paper
                     "A" => 6, // rock - win
                     "B" => 3, // paper - draw
                     "C" => 0, // scissors - lose
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
                 "Z" => 3 + match op_choice { // scissors
                     "A" => 0, // rock - lose
                     "B" => 6, // paper - win
                     "C" => 3, // scissors - draw
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
-                _ => panic!(),
+                _ => unreachable!(),
             };
 
 
@@ -43,21 +43,21 @@ pub fn day2() {
                     "A" => 3, // rock - scissors
                     "B" => 1, // paper - rock
                     "C" => 2, // scissors - paper
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
                 "Y" => 3 + match op_choice { // draw
                     "A" => 1, // rock - rock
                     "B" => 2, // paper - paper
                     "C" => 3, // scissors - scissors
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
                 "Z" => 6 + match op_choice { // win
                     "A" => 2, // rock - paper
                     "B" => 3, // paper - scissors
                     "C" => 1, // scissors - rock
-                    _ => panic!(),
+                    _ => unreachable!(),
                 },
-                _ => panic!(),
+                _ => unreachable!(),
             };
         }
     }
