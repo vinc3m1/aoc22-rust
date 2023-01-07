@@ -1,9 +1,7 @@
 pub fn run() {
     println!("day 1!");
 
-    let contents = include_str!("day1.txt");
-
-    let mut lines = contents.lines();
+    let mut lines = include_str!("day1.txt").lines();
 
     let mut max_calories = 0;
 

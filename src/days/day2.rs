@@ -3,9 +3,7 @@ use itertools::Itertools;
 pub fn run() {
     println!("day 2!");
 
-    let contents = include_str!("day2.txt");
-
-    let mut lines = contents.lines();
+    let mut lines = include_str!("day2.txt").lines();
 
     let mut score_p1 = 0;
     let mut score_p2 = 0;
