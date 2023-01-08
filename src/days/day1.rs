@@ -1,8 +1,6 @@
 pub fn run() {
     println!("day 1!");
 
-    let mut lines = include_str!("day1.txt").lines();
-
     let mut max_calories = 0;
 
     let mut top3_calories = [0; 3];
@@ -10,7 +8,7 @@ pub fn run() {
     let mut calories = 0;
 
     // loop through all lines
-    while let Some(line) = lines.next() {
+    for line in include_str!("day1.txt").lines() {
         // while lines are not empty, accumulate to current calorie count
         if !line.is_empty() {
             calories += line.parse::<i32>().unwrap();
