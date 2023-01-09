@@ -26,20 +26,24 @@ pub fn run() {
 
         // part2 find shared items among 3
         if i % 3 == 0 {
-            // first member of group, reset and add all elements of first bag
+            // first member of group, reset and add all elements of first bag, dedup
             group_shared.clear();
             group_shared.extend(line.chars());
+            group_shared.sort_unstable();
+            group_shared.dedup();
         } else {
             // filter by shared characters
             group_shared.retain(|c| line.contains(*c))
         }
         if i % 3 == 2 {
-            group_shared.dedup();
             total_priority2 += char_priority(group_shared.pop().unwrap());
         }
     }
     println!("total priority (part1): {total_priority1}");
     println!("total priority (part2): {total_priority2}");
+
+    assert_eq!(total_priority1, 7824);
+    assert_eq!(total_priority2, 2798);
 }
 
 fn char_priority(char: char) -> i32 {

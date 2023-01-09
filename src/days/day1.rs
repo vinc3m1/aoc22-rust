@@ -1,9 +1,12 @@
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+
 pub fn run() {
     println!("day 1!");
 
     let mut max_calories = 0;
 
-    let mut top3_calories = [0; 3];
+    let mut top3_calories = BinaryHeap::new();
 
     let mut calories = 0;
 
@@ -26,8 +29,11 @@ pub fn run() {
 
         // if any of the top 3 calories are smaller than the current elf's,
         // find the smallest one and replace it with the current elf's calories
-        if let Some(min_top3) = top3_calories.iter_mut().filter(|x| **x < calories).min() {
-            *min_top3 = calories
+
+        top3_calories.push(Reverse(calories));
+
+        while top3_calories.len() > 3 {
+            top3_calories.pop();
         }
 
         // reset calories for next elf
@@ -38,5 +44,10 @@ pub fn run() {
 
     println!("top calories: {:?}", top3_calories);
 
-    println!("sum top calories: {:?}", top3_calories.iter().sum::<i32>());
+    let top3 = top3_calories.iter().map(|i| i.0).sum::<i32>();
+
+    println!("sum top calories: {:?}", top3);
+
+    assert_eq!(max_calories, 68467);
+    assert_eq!(top3, 203420);
 }

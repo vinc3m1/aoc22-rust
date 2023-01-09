@@ -76,4 +76,7 @@ pub fn run() {
 
     println!("score p1: {score_p1}");
     println!("score p2: {score_p2}");
+
+    assert_eq!(score_p1, 8392);
+    assert_eq!(score_p2, 10116);
 }
