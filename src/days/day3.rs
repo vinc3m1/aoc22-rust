@@ -10,7 +10,7 @@ pub fn run() {
     let mut total_priority1 = 0;
     let mut total_priority2 = 0;
 
-    let mut group_shared = Vec::new();
+    let mut group = vec![""; 3];
 
     for (i, line) in include_str!("day3.txt").lines().enumerate() {
         // part 1, find duplicates between compartments
@@ -24,19 +24,15 @@ pub fn run() {
             }
         }
 
-        // part2 find shared items among 3
-        if i % 3 == 0 {
-            // first member of group, reset and add all elements of first bag, dedup
-            group_shared.clear();
-            group_shared.extend(line.chars());
-            group_shared.sort_unstable();
-            group_shared.dedup();
-        } else {
-            // filter by shared characters
-            group_shared.retain(|c| line.contains(*c))
-        }
+        group[i % 3] = line;
+
         if i % 3 == 2 {
-            total_priority2 += char_priority(group_shared.pop().unwrap());
+            for c in group[0].chars() {
+                if group[1].contains(c) && group[2].contains(c) {
+                    total_priority2 += char_priority(c);
+                    break;
+                }
+            }
         }
     }
     println!("total priority (part1): {total_priority1}");
