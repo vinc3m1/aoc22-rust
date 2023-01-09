@@ -12,10 +12,9 @@ pub fn run() {
 
     let mut group = vec![""; 3];
 
-    for (i, line) in include_str!("day3.txt").lines().enumerate() {
+    for (i, rucksack) in include_str!("day3.txt").lines().enumerate() {
         // part 1, find duplicates between compartments
-        let comp1 = &line[..line.len() / 2];
-        let comp2 = &line[line.len() / 2..];
+        let (comp1, comp2) = rucksack.split_at(rucksack.len()/2);
 
         'main: for char1 in comp1.chars() {
             if comp2.contains(char1) {
@@ -24,7 +23,7 @@ pub fn run() {
             }
         }
 
-        group[i % 3] = line;
+        group[i % 3] = rucksack;
 
         if i % 3 == 2 {
             for c in group[0].chars() {
