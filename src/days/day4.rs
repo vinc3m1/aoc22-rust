@@ -4,16 +4,23 @@ pub fn run() {
     println!("day4!");
 
     let mut contained = 0;
+    let mut overlaps = 0;
     for line in include_str!("day4.txt").lines() {
         let pair: AssignmentPair = line.into();
 
         if pair.0.contains(&pair.1) || pair.1.contains(&pair.0) {
             contained += 1;
         }
+        if pair.0.overlaps(&pair.1) {
+            overlaps += 1;
+        }
     }
 
-    println!("full contained: {contained}");
+    println!("fully contained: {contained}");
     assert_eq!(contained, 576);
+
+    println!("overlaps: {overlaps}");
+    assert_eq!(overlaps, 905);
 }
 
 struct AssignmentPair(Assignment, Assignment);
@@ -34,5 +41,12 @@ struct Assignment(i32, i32);
 impl Assignment {
     fn contains(&self, other: &Assignment) -> bool {
         self.0 <= other.0 && self.1 >= other.1
+    }
+
+    fn overlaps(&self, other: &Assignment) -> bool {
+        self.0 <= other.0 && other.0 <= self.1 // other start within self range
+      || self.0 <= other.1 && other.1 <= self.1 // other end within self range
+      || other.0 <= self.0 && self.0 <= other.1 // self start within other range
+      || other.0 <= self.1 && self.1 <= other.1 // self end within other range
     }
 }
