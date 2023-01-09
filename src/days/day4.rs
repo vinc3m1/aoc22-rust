@@ -6,11 +6,12 @@ pub fn run() {
     let mut contained = 0;
     let mut overlaps = 0;
     for line in include_str!("day4.txt").lines() {
-        let pair: AssignmentPair = line.into();
+        let pair = AssignmentPair::from(line);
 
         if pair.0.contains(&pair.1) || pair.1.contains(&pair.0) {
             contained += 1;
         }
+
         if pair.0.overlaps(&pair.1) {
             overlaps += 1;
         }
