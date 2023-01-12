@@ -40,10 +40,23 @@ pub fn run() {
         .filter(|&&size| size <= 100000)
         .sum();
 
-    println!(
-        "part 1 -- sum of dirs at most size 100000: {:?}",
-        at_most_100k
-    );
+    println!("part 1 -- sum of dirs at most 100000: {:?}", at_most_100k);
+    assert_eq!(at_most_100k, 1315285);
+
+    let total_disk_space: usize = 70000000;
+    let need_unused_space: usize = 30000000;
+    let needed_size = need_unused_space - (total_disk_space - tree.root_size());
+
+    let mut dir_sizes = tree.dir_sizes();
+    dir_sizes.sort_unstable();
+    let dir_to_delete_size = dir_sizes
+        .iter()
+        .find(|&&size| size > needed_size)
+        .copied()
+        .unwrap();
+
+    println!("part 2 -- size of dir to delete: {:?}", dir_to_delete_size);
+    assert_eq!(dir_to_delete_size, 9847279);
 }
 
 struct ArenaTree {
@@ -113,13 +126,17 @@ impl ArenaTree {
         }
     }
 
-    fn dir_sizes(self) -> Vec<usize> {
+    fn dir_sizes(&self) -> Vec<usize> {
         return self
             .arena
             .iter()
             .filter(|f| f.children.is_some())
             .map(|f| f.size)
             .collect();
+    }
+
+    fn root_size(&self) -> usize {
+        self.arena[0].size
     }
 }
 
