@@ -1,7 +1,7 @@
 use itertools::Itertools;
 
 pub fn run() {
-    println!("day4!");
+    println!("day 4!");
 
     let mut contained = 0;
     let mut overlaps = 0;

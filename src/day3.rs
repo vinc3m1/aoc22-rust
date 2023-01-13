@@ -1,5 +1,5 @@
 pub fn run() {
-    println!("day3!");
+    println!("day 3!");
 
     let anum = 'a' as i32;
     let znum = 'z' as i32;

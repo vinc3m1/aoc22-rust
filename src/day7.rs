@@ -1,7 +1,7 @@
 use itertools::Itertools;
 
 pub fn run() {
-    println!("day7!");
+    println!("day 7!");
 
     let mut tree = ArenaTree::new();
     let mut current_dir: usize = 0;

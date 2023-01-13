@@ -1,7 +1,7 @@
 use itertools::Itertools;
 
 pub fn run() {
-    println!("day5!");
+    println!("day 5!");
 
     let mut stacks1 = vec![
         String::from("DLJRVGF"),  // 1

@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 pub fn run() {
-    println!("day6!");
+    println!("day 6!");
 
     let input = include_str!("day6.txt");
 
