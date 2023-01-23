@@ -7,6 +7,7 @@ mod day6;
 mod day7;
 mod day8;
 mod day9;
+mod day10;
 
 fn main() {
     println!("Hello, world!");
@@ -21,6 +22,7 @@ fn main() {
         day7::run,
         day8::run,
         day9::run,
+        day10::run,
     ];
 
     for day in days {
